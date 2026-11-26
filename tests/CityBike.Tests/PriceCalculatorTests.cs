@@ -30,4 +30,18 @@ public class PriceCalculatorTests
 
         Assert.Equal(250m, price);
     }
+
+    [Fact]
+    public void Calculate_61Seconds_Returns15()
+    {
+        decimal price = _calculator.Calculate(61);
+
+        Assert.Equal(15m, price);
+    }
+
+    [Fact]
+    public void Calculate_NegativeSeconds_ThrowsArgumentOutOfRangeException()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => _calculator.Calculate(-1));
+    }
 }
